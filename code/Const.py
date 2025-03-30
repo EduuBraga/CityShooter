@@ -1,0 +1,10 @@
+WIN_WIDTH = 1280
+WIN_HEIGHT = 720
+
+FONT_STRONG = "Sigmar One Regular"
+FONT_PIXEL = "Jersey 15 Regular"
+
+COLOR_RED = (247, 55, 79)
+COLOR_WHITE = (244, 244, 244)
+
+MENU_OPTIONS = ["NEW GAME", "SCORE", "EXIT"]

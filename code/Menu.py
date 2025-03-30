@@ -6,9 +6,9 @@ from .Const import WIN_WIDTH, WIN_HEIGHT, FONT_STRONG, FONT_PIXEL, COLOR_RED, CO
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.image = pygame.image.load("./assets/background-menu.png")
-        self.image = pygame.transform.scale(self.image, (WIN_WIDTH, WIN_HEIGHT))  # Redimensiona a imagem
-        self.rect = self.image.get_rect(left=0, top=0)
+        self.surf = pygame.image.load("./assets/background-menu.png").convert_alpha()
+        self.surf = pygame.transform.scale(self.surf, (WIN_WIDTH, WIN_HEIGHT))  # Redimensiona a imagem
+        self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
         menu_option = 0
@@ -19,7 +19,7 @@ class Menu:
 
         # Carregando conteúdo do menu
         while True:
-            self.window.blit(source=self.image, dest=self.rect)
+            self.window.blit(source=self.surf, dest=self.rect)
 
             # Inserindo logo do jogo
             self.menu_text(150, "Dead", COLOR_RED, ((WIN_WIDTH / 2), 100), FONT_STRONG)

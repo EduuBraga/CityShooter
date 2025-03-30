@@ -11,10 +11,10 @@ COLOR_RED_DARK = (82, 37, 70)
 MENU_OPTIONS = ["NEW GAME", "SCORE", "EXIT"]
 
 ENTITY_SPEED = {
-    'level1bg1': 1,
-    'level1bg2': 2,
-    'level1bg3': 3,
-    'level1bg4': 4,
-    'level1bg5': 5,
-    'level1bg6': 6
+    'level1bg1': 0.5,
+    'level1bg2': 1,
+    'level1bg3': 2,
+    'level1bg4': 3,
+    'level1bg5': 4,
+    'level1bg6': 5
 }

@@ -11,8 +11,9 @@ class Background(Entity):
         self.rect = self.surf.get_rect(topleft=position)
 
     def move(self):
-        self.rect.x -= ENTITY_SPEED[self.name]
-
-        # Quando o background sair completamente da tela
-        if self.rect.right <= 0:
-            self.rect.left = WIN_WIDTH  # Reposiciona à direita
+        pass
+        # self.rect.x -= ENTITY_SPEED[self.name]
+        #
+        # # Quando o background sair completamente da tela
+        # if self.rect.right <= 0:
+        #     self.rect.left = WIN_WIDTH  # Reposiciona à direita

@@ -1,3 +1,5 @@
+import pygame
+
 WIN_WIDTH = 1280
 WIN_HEIGHT = 720
 
@@ -11,10 +13,10 @@ COLOR_RED_DARK = (82, 37, 70)
 MENU_OPTIONS = ["NEW GAME", "SCORE", "EXIT"]
 
 ENTITY_SPEED = {
-    'level1bg1': 0.5,
-    'level1bg2': 1,
-    'level1bg3': 2,
-    'level1bg4': 3,
-    'level1bg5': 4,
-    'level1bg6': 5
+    'player': 3,
+    'enemy1': 5,
+    'enemy2': 2
 }
+
+EVENT_ENEMY = pygame.USEREVENT + 1
+SPAWN_TIME = 3000

@@ -2,7 +2,7 @@ import random
 
 import pygame
 
-from .Const import COLOR_WHITE, WIN_HEIGHT, FONT_PIXEL, EVENT_ENEMY, SPAWN_TIME
+from .Const import COLOR_WHITE, WIN_HEIGHT, FONT_PIXEL, EVENT_ENEMY, SPAWN_TIME, COLOR_YELLOW
 from .Entity import Entity
 from .EntityFactory import EntityFactory
 from .EntityMediator import EntityMediator
@@ -41,6 +41,16 @@ class Level:
                     shot = ent.shoot()
                     if shot is not None:  # Só adiciona se não for None
                         self.entity_list.append(shot)
+
+                if ent.name == 'player':
+                    self.level_text(
+                        28,
+                        f'Player - Health:{ent.health}',
+                        COLOR_YELLOW,
+                        (102, 50),
+                        FONT_PIXEL
+                    )
+
 
             # Limpa entidades nulas periodicamente
             self.entity_list = [ent for ent in self.entity_list if ent is not None]

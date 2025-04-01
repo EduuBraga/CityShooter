@@ -12,10 +12,26 @@ COLOR_RED_DARK = (82, 37, 70)
 
 MENU_OPTIONS = ["NEW GAME", "SCORE", "EXIT"]
 
+PLAYER_SHOT_DELAY = 15
+
 ENTITY_SPEED = {
     'player': 3,
     'enemy1': 5,
-    'enemy2': 2
+    'enemy2': 2,
+    'playerShoot': 5
+}
+
+ENTITY_HEALTH = {
+    'level1bg1': 999,
+    'level1bg2': 999,
+    'level1bg3': 999,
+    'level1bg4': 999,
+    'level1bg5': 999,
+    'level1bg6': 999,
+    'player': 300,
+    'enemy1': 30,
+    'enemy2': 60,
+    'playerShoot': 1
 }
 
 EVENT_ENEMY = pygame.USEREVENT + 1

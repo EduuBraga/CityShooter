@@ -1,12 +1,15 @@
 import pygame
 import os
-from code.Const import ENTITY_SPEED
+from code.Const import ENTITY_SPEED, WIN_HEIGHT, PLAYER_SHOT_DELAY
 from code.Entity import Entity
+from code.PlayerShot import PlayerShot
 
 
 class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
+
+        self.shot_delay = PLAYER_SHOT_DELAY
 
         # Configurações de animação
         self.animations = {
@@ -107,3 +110,16 @@ class Player(Entity):
 
         # Atualiza animação
         self.animate()
+
+    def shoot(self):
+        # Verifica se pode atirar (delay acabou e espaço pressionado)
+        pressed_key = pygame.key.get_pressed()
+        if pressed_key[pygame.K_SPACE] and self.shot_delay <= 0:
+            self.shot_delay = PLAYER_SHOT_DELAY  # Reseta o delay
+            return PlayerShot('playerShoot', (self.rect.centerx, WIN_HEIGHT - 200))
+
+        # Decrementa o delay apenas quando espaço não está pressionado
+        if not pressed_key[pygame.K_SPACE] and self.shot_delay > 0:
+            self.shot_delay -= 1
+
+        return None  # Retorna None quando não atirar

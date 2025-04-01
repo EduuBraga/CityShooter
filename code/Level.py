@@ -5,6 +5,9 @@ import pygame
 from .Const import COLOR_WHITE, WIN_HEIGHT, FONT_PIXEL, EVENT_ENEMY, SPAWN_TIME
 from .Entity import Entity
 from .EntityFactory import EntityFactory
+from .EntityMediator import EntityMediator
+from .Player import Player
+from .Enemy import Enemy
 
 
 class Level:
@@ -27,8 +30,20 @@ class Level:
             self.window.fill((0, 0, 0))  # Limpa a tela com preto
 
             for ent in self.entity_list:
+                if ent is None:  # Pula entidades nulas
+                    continue
+
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+
+                # Só tenta atirar se for o Player
+                if isinstance(ent, Player):
+                    shot = ent.shoot()
+                    if shot is not None:  # Só adiciona se não for None
+                        self.entity_list.append(shot)
+
+            # Limpa entidades nulas periodicamente
+            self.entity_list = [ent for ent in self.entity_list if ent is not None]
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -54,6 +69,8 @@ class Level:
             )
 
             pygame.display.flip()
+            EntityMediator.verify_collision(self.entity_list)
+            EntityMediator.verify_health(self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple, name_font: str):
         text_font = pygame.font.SysFont(name=name_font, size=text_size)
